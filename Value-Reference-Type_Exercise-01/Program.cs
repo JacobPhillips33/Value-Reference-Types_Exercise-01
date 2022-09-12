@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Value_and_Reference_Types_Exercise_01
@@ -16,29 +17,41 @@ namespace Value_and_Reference_Types_Exercise_01
         {
             #region Value Type TODOs 
 
-            // TODO: Use the 3 value type variables that are already declared and initialized below
+            // DONE: Use the 3 value type variables that are already declared and initialized below
             double myDouble = .005;
             int myInteger = 10;
             string myString = "Hello World";
 
-            // TODO: Write out each of these to the Conosle like so:
+            // DONE: Write out each of these to the Conosle like so:
             // Console.WriteLine($"Before: {yourVariable}");
 
-            // TODO: Use the ChangeValueType() function to "change the value type" for each variable
+            Console.WriteLine($"Before: {myDouble}");
+            Console.WriteLine($"Before: {myInteger}");
+            Console.WriteLine($"Before: {myString}");
+
+            // DONE: Use the ChangeValueType() function to "change the value type" for each variable
             // ChangeValueType(yourVariable);
+
+            ChangeValueType(myDouble);
+            ChangeValueType(myInteger);
+            ChangeValueType(myString);
 
             AddSmallBreak();
 
             // Thought Experiment: What will the value of the original variable be after going through the ChangeValueType() method?
-            // TODO: Double variable value = ?
-            // TODO: Integer variable value = ?
-            // TODO: String variable value = ?
+            // DONE: Double variable value = .005
+            // DONE: Integer variable value = 10
+            // DONE: String variable value = "Hello World"
 
             // Why:
-            // Answer: ?
+            // Answer: Because value types copy the value and are not affected if you change the variable they grabbed the value from.
 
-            // TODO: Write out the variable to the console after being passed through the ChangeValueType() function
+            // DONE: Write out the variable to the console after being passed through the ChangeValueType() function
             // Console.WriteLine($"Adjusted: {yourVariable}");
+
+            Console.WriteLine($"Adjusted: {myDouble}");
+            Console.WriteLine($"Adjusted: {myInteger}");
+            Console.WriteLine($"Adjusted: {myString}");
 
             #endregion
 
@@ -46,43 +59,125 @@ namespace Value_and_Reference_Types_Exercise_01
 
             #region Reference Type TODOs
 
-            // TODO: Use the 4 reference type variables that are already declared and initialized below
-            StringBuilder sb = new StringBuilder("The starting string's value.");
-            List<int> myList = new List<int>() { 1, 2, 3 };
-            int[] myArray = new int[] { 4, 5, 6 };
+            // DONE: Use the 4 reference type variables that are already declared and initialized below
+            StringBuilder sb = new StringBuilder("The starting string's value."); //DONE
+            List<int> myList = new List<int>() { 1, 2, 3 }; //DONE
+            int[] myArray = new int[] { 4, 5, 6 };  //DONE
             Dog myDogObject = new Dog { name = "Lassy" };
 
-            // TODO: Write out each of these to the Conosle. Remember to use a loop for the list and array!
+            // DONE: Write out each of these to the Conosle. Remember to use a loop for the list and array!
 
 
-            // TODO: Use the ChangeReferenceType() function to "change the reference" for each variable
+            // Answer for sb 
+
+            Console.WriteLine($"Before: {sb}");
+
+            // Answer for myList 
+            
+            Console.Write($"Before: ");
+
+            foreach (int num in myList)
+            {
+                Console.Write(num);
+            }
+
+            Console.WriteLine(); //Using this so that the below will be on a new line - there is probably a better way
+
+            //Answer for myArray
+
+            Console.Write("Before: ");
+
+            foreach(int num in myArray)
+            {
+                Console.Write(num);
+            }
+
+            Console.WriteLine(); //Using this so that the below will be on a new line - there is probably a better way
+
+            //Answer for myDogObject
+
+            Console.WriteLine(myDogObject.name);
+
+
+
+            // DONE: Use the ChangeReferenceType() function to "change the reference" for each variable
+
+            ChangeReferenceType(sb);
+            ChangeReferenceType(myList);
+            ChangeReferenceType(myArray);
+            ChangeReferenceType(myDogObject);
 
             // Thought Experiment: What will the value of the original variable be after going through the ChangeReferenceType() method?
-            // TODO: StringBuilder variable value = ?
-            // TODO: List<int> variable values = ?
-            // TODO: int[] variable values = ?
-            // TODO: Dog object variable's name = ?
+            // DONE: StringBuilder variable value = "The ending string's value."
+            // DONE: List<int> variable values = 100200300
+            // DONE: int[] variable values = 400500600
+            // DONE: Dog object variable's name = "A changed name"
 
             // Why:
-            // Answer: ?
+            // Answer: Because reference types reference a value placeholder rather than copying the value directly. If you
+                    // change the value in the placeholder, the reference type value will change because the value inside
+                    // the placeholder that it is referencing has changed.
 
 
-            // TODO: Write out the adjusted variables to the console after being passed through the ChangeReferenceType() function
-
+            // DONE: Write out the adjusted variables to the console after being passed through the ChangeReferenceType() function
 
             #endregion
+
+            AddSmallBreak();
+
+
+            //Answer for sb
+
+            Console.WriteLine($"Adjusted: {sb}");
+
+
+            //Answer for myList
+
+            Console.Write("Adjusted: ");
+
+            foreach(var num in myList)
+            {
+                Console.Write(num);
+            }
+
+            Console.WriteLine();
+
+
+            //Answer for myArray
+
+            Console.Write("Adjusted: ");
+
+            foreach (var num in myArray)
+            {
+                Console.Write(num);
+            }
+
+            Console.WriteLine();
+
+
+            //Answer for myDogObject
+
+            Console.WriteLine($"Adjusted: {myDogObject.name}");
+
+
+            AddLargeBreak();
         }
+
+
+
+
+
 
         #region Value Type TODO methods
 
         static void ChangeValueType(double x)
         {
-            x = 1.125; // x's value has been changed to 1.125
+            x = 1.125; // x's value has been changed to 1.125            
         }
 
         static void ChangeValueType(int x)
         {
-            x = 100; // x's value has been changed to 100
+            x = 100; // x's value has been changed to 100            
         }
 
         static void ChangeValueType(string x)
